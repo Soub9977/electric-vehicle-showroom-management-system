@@ -1,0 +1,49 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+
+<h1>VIEW ALL QUOTATION</h1>
+    <form method="POST" action="/evapp/viewallquotation/">
+    {%csrf_token %}
+
+<table class="table">
+    <tr><td>Quotation number</td>
+    <td>Customer Name</td>
+    <td>Phone Number</td>
+    <td>Address</td>
+    <td>Model Name</td>
+
+    <td>Quotationdate</td>
+    <td>Avail Finance</td>
+    <td>Tax</td>
+    <td>Price</td>
+    <td>Total Amount</td>
+    <td>Color ID</td>
+    <td>Customer Code</td>
+    </tr>
+
+
+    {% for item in quotationobjget %}
+    <tr>
+         <td><a href="/evapp/bookingform/{{item.quotationnumber}}/{{item.totalamount}}/">{{item.quotationnumber}}</td>
+         <td>{{request.session.session_name}}</td>
+         <td>{{request.session.session_phone}}</td>
+         <td><textarea readonly style="border:0;overflow:hidden;" rows="2" cols="20" >{{request.session.session_address}}</textarea></td>
+         <td>{{item.modelname}}</td>
+         <td>{{item.quotationdate}}</td>
+         <td>{{item.availfinance}}</td>
+         <td>{{item.tax}}</td>
+         <td>{{item.price}}</td>
+         <td>{{item.totalamount}}</td>
+         <td>{{item.colorid.colorid}}</td>
+         <td>{{item.customercode.customercode}}</td>
+    </tr>
+    {% endfor %}
+
+
+
+</table>
+    </form>
+
+{% endblock %}
+
+

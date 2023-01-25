@@ -1,0 +1,65 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<form method="POST" action="/evapp/addmodel/">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td>Model Name</td>
+            <td><input type="text" name="textmodelname" value="{{modelname}}"/></td>
+        </tr>
+        <tr>
+            <td>Gear</td>
+            <td><input type="text" name="textgear"/></td>
+        </tr>
+        <tr>
+            <td>Dimension</td>
+            <td><input type="text" name="textdimension"/></td>
+        </tr>
+        <tr>
+            <td>Battery Capacity</td>
+            <td><input type="text" name="textbatterycapacity"/></td>
+        </tr>
+         <tr>
+            <td>Wheel</td>
+            <td><input type="text" name="textwheel"/></td>
+        </tr>
+         <tr>
+            <td>Brake</td>
+            <td><input type="text" name="textbrake"/></td>
+        </tr>
+         <tr>
+            <td>Speed</td>
+            <td><input type="text" name="textspeed"/></td>
+        </tr>
+         <tr>
+            <td>Emission</td>
+            <td><input type="text" name="textemission"/></td>
+        </tr>
+         <tr>
+            <td>USB</td>
+            <td><input type="text" name="textusb"/></td>
+        </tr>
+         <tr>
+            <td>Charging time</td>
+            <td><input type="text" name="textchargingtime"/></td>
+        </tr>
+         <tr>
+            <td>MRP</td>
+            <td><input type="number" name="textmrp"/></td>
+        </tr>
+         <tr>
+            <td>Warranty</td>
+            <td><input type="text" name="textwarranty"/></td>
+        </tr>
+         <tr>
+            <td>Description</td>
+            <td><input type="text" name="textdescription"/></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Save" /></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+

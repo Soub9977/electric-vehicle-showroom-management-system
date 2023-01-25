@@ -1,0 +1,26 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h3>ADD VEHICLE FORM</h3> <br/>
+
+
+<form method="POST" action="/evapp/addvehicle/">
+    {%csrf_token %}
+
+    <table class="table">
+        <tr>
+        <td>Brand</td>
+            <td><input type="text" name="textbrand"></td>
+        </tr>
+
+        <tr>
+        <td>Model</td>
+            <td><input type="text" name="textmodelname" required  /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

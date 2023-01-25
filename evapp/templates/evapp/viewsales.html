@@ -1,0 +1,32 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>SALES REPORT</h1>
+
+<table class="table">
+    <tr><td>From :</td><td>{{fromdate}}</td></tr>
+    <tr><td>To:</td><td>{{todate}}</td></tr>
+    <tr>
+        <td>Color ID</td>
+        <td>Number Of Vehicles</td>
+        <td>Sum Of Amount</td>
+        <td>Modelname</td>
+
+    </tr>
+{% for item in bookingobj %}
+    <tr>
+
+        <td>{{item.colorid}}</td>
+        <td>{{item.soldvehicles}}</td>
+        <td>{{item.totalamount}}</td>
+        <td>{{item.modelname}}</td>
+
+    </tr>
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}
+
+
+

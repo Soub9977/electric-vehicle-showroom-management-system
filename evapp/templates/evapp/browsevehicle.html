@@ -1,0 +1,29 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>BROWSE VEHICLE</h1>
+     {% if count > 0 %}
+<table class="table">
+    {% for item in vehicleobj %}
+        {% if forloop.first %}
+        <tr>
+            {% endif %}
+            {% if not forloop.counter|divisibleby:"2" %}
+        <tr>
+            {% endif %}
+            <td>
+                {{item.brand}}:<a href="/evapp/browsemodel/{{item.modelname}}/">{{item.modelname}}</a></td>
+
+                {% if forloop.counter|divisibleby:"2" %}
+                </tr>
+                {% endif %}
+    {% endfor %}
+</table>
+    {% else %}
+    <h4>No Vehicle models data found</h4>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+

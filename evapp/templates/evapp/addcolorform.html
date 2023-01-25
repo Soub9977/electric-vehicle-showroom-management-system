@@ -1,0 +1,46 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>ADD COLOR FORM</h1>
+
+
+<form method="POST" action="/evapp/addcolor/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table class="table">
+        <tr>
+        <td>Modelname</td>
+            <td><input type="text" name="textmodelname" value="{{modelname}}"></td>
+        </tr>
+        <tr>
+        <td>Model Id</td>
+            <td><input type="text" name="textmodelid" value="{{modelid}}"></td>
+        </tr>
+        <tr>
+        <td>Color</td>
+            <td><input type="text" name="textcolor" required  /></td>
+        </tr>
+         <tr>
+        <td>Stock</td>
+            <td><input type="number" name="textstock" required  /></td>
+        </tr>
+         <tr>
+        <td>Image</td>
+             <td><input type="file" name="photo" required  /></td>
+        </tr>
+        <tr>
+        <td>Image Back</td>
+             <td><input type="file" name="photo1" required  /></td>
+        </tr>
+        <tr>
+        <td>Image Side</td>
+             <td><input type="file" name="photo2" required  /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}
+

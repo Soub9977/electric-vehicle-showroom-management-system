@@ -1,0 +1,32 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>VIEW PAYMENT LIST</h1>
+     {% if count > 0 %}
+<table class="table">
+    <tr>
+        <td>Booking ID</td>
+        <td>Balance</td>
+        <td>Amount Paid</td>
+        <td>Paid  Date</td>
+        <td>Transaction ID</td>
+    </tr>
+{% for item in paymentobj %}
+    <tr>
+
+        <td>{{item.bookingid.bookingid}}</td>
+        <td>{{item.balance}}</td>
+        <td>{{item.amountpaid}}</td>
+        <td>{{item.paiddate}}</td>
+        <td>{{item.transactionid}}</td>
+    </tr>
+{% endfor %}
+</table>
+     {% else %}
+    <h4>No Payment data found</h4>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+

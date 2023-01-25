@@ -1,0 +1,31 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+    {% if count > 0 %}
+<h1>VIEW VEHICLE LIST</h1>
+<table class="table">
+
+    <tr>
+        <td>Brand</td>
+        <td>Model Name</td>
+        <td>Click to Add Model</td>
+        <td>Click to View Model</td>
+    </tr>
+{% for item in vehicleobj %}
+    <tr>
+        <td>{{item.brand}}</td>
+        <td>{{item.modelname}}</td>
+        <td><a href="/evapp/addmodelforminfo/{{item.modelname}}/">{{item.modelname}}</a><br/></td>
+        <td><a href="/evapp/viewmodeldetails/{{item.modelname}}/">View Model</a></td>
+    </tr>
+{% endfor %}
+</table>
+
+    {% else %}
+        <h3>No Vehicle data found</h3>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+

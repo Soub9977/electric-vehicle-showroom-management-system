@@ -1,0 +1,37 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>ADMIN DELIVERY FORM</h1>
+<form method="POST" action="/evapp/admindelivery/">
+     <h2>DELIVERY FORM</h2>
+
+
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td>Booking ID</td>
+            <td><input type="number" value="{{x}}" required  /></td>
+        </tr>
+        <tr>
+            <td>Chassis Number</td>
+            <td><input type="text" name="textchassisnumber" required maxlength="17" /></td>
+        </tr>
+        <tr>
+            <td>Service 1</td>
+            <td><input type="date" name="textservicedate1" required  /></td>
+        </tr>
+        <tr>
+            <td>Service 2</td>
+            <td><input type="date" name="textservicedate2" required  /></td>
+        </tr>
+        <tr>
+            <td>Service 3</td>
+            <td><input type="date" name="textservicedate3" required  /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

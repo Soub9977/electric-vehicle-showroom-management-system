@@ -1,0 +1,125 @@
+{% extends 'evapp/Lheader.html' %}
+{% block content %}
+
+<script type="text/javascript">
+	function validate()
+	{
+		   var namepattern=/^[A-Za-z]+\s?[A-Za-z]+$/;
+	   var name=document.getElementById("textname").value;
+	   if(name.search(namepattern)==-1)
+	   {
+	     alert("Name contains alphabets with only one space");
+	     return false;
+	   }
+
+
+
+	var textphonepattern=/^[6789]{1}[0-9]{9}$/;
+	var phone=document.getElementById("textphone").value;
+	if(phone.search(textphonepattern)==-1)
+	{
+	  alert("Phone number should contain only 10 digits");
+	  alert("Phone number should start from 6,7,8,9");
+	  return false;
+	}
+
+	var passwordpattern=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{5,10}$/;
+	var password=document.getElementById("textpassword").value;
+	if(password.search(passwordpattern)==-1)
+	{
+	  alert("Password must contain at least 1 lower, 1 upper, 1 digit, 1 special character");
+	  return false;
+	}
+
+	var pincodepattern=/^[0-9]{6,6}$/;
+	var pincode=document.getElementById("textpincode").value;
+	if(pincode.search(pincodepattern)==-1)
+	{
+	  alert("Pincode should contain only 6 digits");
+	  return false;
+	}
+	var citypattern=/^[A-Za-z]+\s?[A-Za-z]+$/;
+	var city=document.getElementById("textcity").value;
+	if(city.search(citypattern)==-1)
+	{
+	  alert("city should cointain only alphabets");
+	  return false;
+	}
+}
+</script>
+
+<h3>CUSTOMER SIGNUP FORM</h3>
+<form class="login100-form validate-form" method="POST" action="/evapp/customersignup/" name="registrationform" onsubmit="return validate();">
+    {% csrf_token %}
+     	<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+         <input type="text" name="textname" id="textname" class="input100" placeholder="Name" required autofocus />
+                	<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</span>
+		</div>
+
+    	<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+
+
+          <input type="email" name="textemail"  class="input100" placeholder="Email" required  />
+                	<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+		</div>
+
+	    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input type="password" name="textpassword" id="textpassword" class="input100" placeholder="Password" required
+	          minlength="5" maxlength="10"/>
+    	      <span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+		</div>
+
+	    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input type="password" name="textconfirmpassword" class="input100" placeholder="Password" required
+	          minlength="4" maxlength="10"/>
+    	     <span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+		</div>
+
+
+               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+       <input type="text" name="textphone" id="textphone" class="input100" placeholder="Phone" required minlength="10" maxlength="10" />
+    	<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+					</div>
+    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+        <lebel>Address</lebel>
+      <textarea name="textaddress" id="textaddress" rows="5" cols="33" style="background-color:#e6e6e6;"></textarea>
+    	<span class="focus-input100"></span>
+						<span class="symbol-input100" style="padding-top:90px;">
+							<i class="fa fa-home" aria-hidden="true"></i>
+						</span>
+					</div>
+
+    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+       <input type="text" name="textcity" id="textcity" class="input100" placeholder="City" required  />
+    <span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-building" aria-hidden="true"></i>
+						</span>
+					</div>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+    <input type="number" name="textpincode" id="textpincode" class="input100" placeholder="Pincode"  maxlength="6" required/>
+           <span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-tag" aria-hidden="true"></i>
+						</span>
+					</div>
+       <button class="login100-form-btn" type="submit" >Submit</button>
+</form>
+
+{% endblock %}
+

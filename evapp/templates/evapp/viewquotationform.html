@@ -1,0 +1,66 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>VIEW QUOTATION</h1>
+
+    <form method="POST" action="/evapp/viewquotation/">
+    {% csrf_token %}
+
+<table class="table">
+    <tr><td>Customer Name</td>
+         <td>{{request.session.session_name}}</td>
+    </tr>
+
+    <tr><td>Phone Number</td>
+         <td>{{request.session.session_phone}}</td>
+    </tr>
+
+    <tr><td>Address</td>
+        <td><textarea readonly>{{request.session.session_address}}</textarea></td>
+    </tr>
+    <tr><td>Model Name</td>
+         <td>{{request.session.modelname}}</td>
+    </tr>
+    <tr><td>Quotation number</td>
+         <td>{{quotationobjget.quotationnumber}}</td>
+    </tr>
+
+    <tr><td>Quotationdate</td>
+       <td>{{quotationobjget.quotationdate}}</td>
+    </tr>
+
+    <tr><td>Avail Finance</td>
+      <td>{{quotationobjget.availfinance}}</td>
+    </tr>
+
+    <tr><td>Tax</td>
+      <td>{{quotationobjget.tax}}</td>
+    </tr>
+
+    <tr><td>Price</td>
+      <td>{{quotationobjget.price}}</td>
+    </tr>
+
+    <tr><td>Total Amount</td>
+        <td>{{quotationobjget.totalamount}}</td>
+    </tr>
+
+    <tr><td>Color ID</td>
+       <td>{{quotationobjget.colorid.colorid}}</td>
+    </tr>
+
+    <tr><td>Color</td>
+         <td>{{request.session.color}}</td>
+    </tr>
+
+    <tr><td>Customer Code</td>
+       <td>{{quotationobjget.customercode.customercode}}</td>
+    </tr>
+
+</table>
+
+    </form>
+</div>
+{% endblock %}
+
+

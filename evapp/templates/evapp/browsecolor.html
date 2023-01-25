@@ -1,0 +1,34 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>BROWSE COLOR</h1>
+     {% if count > 0 %}
+<table class="table">
+{% for item in colorsobj %}
+
+    <tr>
+        <td>Modelname:{{item.modelname.modelname}}</td>
+    </tr>
+    <tr>
+        <td>Price:{{request.session.mrp}}</td>
+    </tr>
+    <tr>
+        <td>Color:{{item.color}}</td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/evapp/quotationform/{{item.color}}/{{item.colorid}}/">Request Quotation</a></td>
+    </tr>
+
+    <tr>
+        <td><img src="/images/{{item.image}}" height="500px" width="500px" /></td>
+
+    </tr>
+{% endfor %}
+</table>
+     {% else %}
+    <h4>No Colors found</h4>
+    {% endif %}
+</div>
+{% endblock %}
+
