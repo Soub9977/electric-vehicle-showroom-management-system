@@ -1,0 +1,18 @@
+
+
+<h1>ADMIN HOME</h1>
+<h1>
+    <ul>
+
+        <li><a href="/evapp/adminchangepasswordform">Change Password</a></li>
+        <li><a href="/evapp/addvehicleform">Add Vehicle</a></li>
+        <li><a href="/evapp/viewvehicle">View Vehicle</a></li>
+        <li><a href="/evapp/viewvehicle">Add Model</a></li>
+        <li><a href="/evapp/viewmodel">View Model</a></li>
+        <li><a href="/evapp/viewvehicle">Add Color</a></li>
+        <li><a href="/evapp/viewcolor">View Color</a></li>
+        <li><a href="/evapp/viewbookings">View Booking</a></li>
+        <li><a href="/evapp/viewbookingforpayment">Payment</a></li>
+        <li><a href="/evapp/viewpayment">View All Payment</a></li>
+    </ul>
+</h1>

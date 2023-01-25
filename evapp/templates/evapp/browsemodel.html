@@ -1,0 +1,48 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<div style="margin:auto; width: 100%; padding: 10px; ">
+<h1>BROWSE MODEL</h1>
+    {% if count > 0 %}
+<table class="table">
+    <tr>
+
+        <td>Modelname    </br>[Click to see color]</td>
+        <td>Gear</td>
+        <td>Dimension</td>
+        <td>Battery Capacity</td>
+        <td>Wheel</td>
+        <td>Brake</td>
+        <td>Speed</td>
+        <td>Emission</td>
+        <td>USB</td>
+        <td>Charging Time</td>
+        <td>MRP</td>
+        <td>Warranty</td>
+        <td>Description</td>
+    </tr>
+    {% for item in evmodelobj %}
+        <tr>
+            <td><a href="/evapp/browsecolor/{{item.modelname.modelname}}/{{item.modelid}}/{{item.mrp}}/">{{item.modelname.modelname}}</a></td>
+            <td>{{item.gear}}</td>
+            <td>{{item.dimension}}</td>
+            <td>{{item.batterycapacity}}</td>
+            <td>{{item.wheel}}</td>
+            <td>{{item.brake}}</td>
+            <td>{{item.speed}}</td>
+            <td>{{item.emission}}</td>
+            <td>{{item.usb}}</td>
+            <td>{{item.chargingtime}}</td>
+            <td>{{item.mrp}}</td>
+            <td>{{item.warranty}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+      {% else %}
+    <h4>No Vehicle models data found</h4>
+    {% endif %}
+</div>
+{% endblock %}
+
+

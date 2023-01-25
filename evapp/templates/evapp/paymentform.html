@@ -1,0 +1,40 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>PAYMENT FORM</h1>
+
+
+<form method="POST" action="/evapp/payment/">
+    {% csrf_token %}
+
+    <table class="table">
+        <tr><td>Booking ID</td>
+         <td><input type="text" value="{{request.session.bookingid}}" /></td>
+         </tr>
+
+         <tr><td>Balance</td>
+         <td>{{y}}</td>
+         </tr>
+
+        <tr>
+        <td>Amount Paid</td>
+            <td><input type="number" name="textamountpaid"></td>
+        </tr>
+
+        <tr>
+        <td>Paid Date</td>
+            <td><input type="date" name="textpaiddate" required  /></td>
+        </tr>
+
+        <tr>
+        <td>Transaction ID</td>
+            <td><input type="text" name="texttransactionid" required maxlength="23"  /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

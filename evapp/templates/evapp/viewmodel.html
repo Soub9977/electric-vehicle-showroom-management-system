@@ -1,0 +1,51 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+
+ {% if count > 0 %}
+<h3>List of Models</h3>
+
+    <table class="table">
+    <tr>
+
+        <td>Modelname</td>
+        <td>Gear</td>
+        <td>Dimension</td>
+        <td>Battery Capacity</td>
+        <td>Wheel</td>
+        <td>Brake</td>
+        <td>Speed</td>
+        <td>Emission</td>
+        <td>USB</td>
+        <td>Charging Time</td>
+        <td>MRP</td>
+        <td>Warranty</td>
+        <td>Description</td>
+        <td>Click to Add Color</td>
+
+    </tr>
+{% for item in evmodelobj %}
+    <tr>
+        <td>{{item.modelname.modelname}}</td>
+        <td>{{item.gear}}</td>
+        <td>{{item.dimension}}</td>
+        <td>{{item.batterycapacity}}</td>
+        <td>{{item.wheel}}</td>
+        <td>{{item.brake}}</td>
+        <td>{{item.speed}}</td>
+        <td>{{item.emission}}</td>
+        <td>{{item.usb}}</td>
+        <td>{{item.chargingtime}}</td>
+        <td>{{item.mrp}}</td>
+        <td>{{item.warranty}}</td>
+        <td>{{item.description}}</td>
+        <td><a href="/evapp/addcolorform/{{item.modelname.modelname}}/{{item.modelid}}/">Add Color</a><br/></td>
+
+
+    </tr>
+{% endfor %}
+</table>
+    {% else %}
+    <h4>No Vehicle models data found</h4>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<h1>Booking Form</h1>
+<form method="POST" action="/evapp/bookings/">
+    {%csrf_token %}
+    <table class="table">
+        <tr>
+            <td>Quotation Number</td>
+            <td><input type="text" name="textquotationnumber" value="{{quotationnumber}}" required readonly /></td>
+        </tr>
+        <tr>
+            <td>Total Amount</td>
+            <td><input type="text" name="texttotalamount" id="texttotalamount" value="{{totalamount}}" required readonly /></td>
+        </tr>
+
+        <tr><td>select delivery type</td>
+            <td><select name="deliverytype" required>
+                <option value="showroom">Showroom PickUp</option>
+                 <option value="homedelivery">Home Delivery</option>
+            </select>
+            </td>
+        </tr>
+          <tr>
+            <td>Delivery Date</td>
+            <td><input type="date" name="textdeliverydate"/></td>
+        </tr>
+        <tr>
+            <td>Advance Paid</td>
+            <td><input type="number" name="textadvancepaid" id="textadvancepaid" onblur="compute()"/></td>
+        </tr>
+
+        <tr>
+            <td>Balance</td>
+            <td><input type="number" name="textbalance" id="textbalance" readonly/></td>
+        </tr>
+        <tr>
+            <td>Transaction ID</td>
+            <td><input type="text" name="texttransactionid" required/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+<script>
+    function compute(){
+   var totalamount=parseFloat(document.getElementById("texttotalamount").value);
+        var balance=totalamount;
+        var advancepaid=parseFloat(document.getElementById("textadvancepaid").value);
+        balance=balance-advancepaid;
+        document.getElementById("textbalance").value=balance;
+
+    }
+</script>
+
+
+{% endblock %}

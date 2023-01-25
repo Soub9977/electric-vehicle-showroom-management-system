@@ -1,0 +1,26 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>VIEW SALES</h1>
+
+<form method="POST" action="/evapp/salesreport/">
+    {% csrf_token %}
+<table class="table">
+    <tr>
+        <td>From Date</td>
+            <td><input type="date" name="textfromdate" required  /></td>
+    </tr>
+    <tr>
+           <td> To Date</td>
+            <td><input type="date" name="texttodate" required  /></td>
+    </tr>
+    <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+
+
+
+    </table>
+</form>
+</div>
+{% endblock %}

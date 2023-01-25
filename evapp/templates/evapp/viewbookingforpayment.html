@@ -1,0 +1,50 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<form method="POST" action="/evapp/viewbookingforpayment/">
+    {% csrf_token %}
+
+<h1>VIEW BOOKING LIST</h1>
+    {% if count > 0 %}
+<table class="table">
+    <tr>
+        <td>Booking ID(click to add payment)</td>
+        <td>Customer Code</td>
+        <td>Customer Name</td>
+        <td>Color ID</td>
+        <td>Color</td>
+
+        <td>Booking Date</td>
+        <td>Delivery Type</td>
+        <td>Delivery Date</td>
+        <td>Advance Paid</td>
+        <td>Balance</td>
+        <td>Quotation Number</td>
+        <td>Status</td>
+    </tr>
+{% for item in bookingobj %}
+    <tr>
+        <td><a href="/evapp/paymentform/{{item.bookingid}}/{{item.balance}}/">{{item.bookingid}}</a></td>
+        <td>{{item.customercode}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.colorid}}</td>
+        <td>{{item.color}}</td>
+
+        <td>{{item.bookingdate}}</td>
+        <td>{{item.deliverytype}}</td>
+        <td>{{item.deliverydate}}</td>
+        <td>{{item.advancepaid}}</td>
+        <td>{{item.balance}}</td>
+        <td>{{item.quotationnumber.quotationnumber}}</td>
+        <td>{{item.status}}</td>
+
+    </tr>
+{% endfor %}
+</table>
+    {% else %}
+        No bookings found with payment due
+    {% endif %}
+
+{% endblock %}
+
+
+

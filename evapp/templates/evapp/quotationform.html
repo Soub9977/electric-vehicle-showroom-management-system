@@ -1,0 +1,38 @@
+{% extends 'evapp/cheader.html' %}
+{% block content %}
+<h1>Quotation Form</h1>
+<form method="POST" action="/evapp/quotation/">
+    {%csrf_token %}
+    <table class="table">
+
+        <tr>
+            <td>Model Name</td>
+            <td><input type="text" name="textmodelname" value="{{request.session.modelname}}" required  /></td>
+        </tr>
+        <tr>
+            <td>Model Id</td>
+            <td><input type="text" name="textmodelid" value="{{request.session.modelid}}"   /></td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td><input type="text" name="textcolor" value="{{request.session.color}}"   /></td>
+        </tr>
+         <tr>
+            <td>Color Id</td>
+            <td><input type="text" name="textcolorid" value="{{request.session.colorid}}"   /></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" name="textprice" value="{{request.session.mrp}}"   /></td>
+        </tr>
+
+        <tr>
+            <td>Avail Finance</td>
+            <td><input type="checkbox" name="textavailfinance"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'evapp/header.html' %}
+{% block content %}
+<div style="margin:auto; width: 50%; padding: 10px; ">
+<h1>VIEW COLOR LIST</h1>
+
+<table class="table">
+    <tr>
+
+        <td>Modelname</td>
+        <td>Color</td>
+        <td>Stock</td>
+        <td>Image</td>
+    </tr>
+{% for item in colorsobj %}
+    <tr>
+        <td>{{item.modelname.modelname}}</td>
+        <td>{{item.color}}</td>
+        <td>{{item.stock}}</td>
+        <td><img src="/images/{{item.image}}" height="200px" width="200px" /></td>
+
+
+
+
+    </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
