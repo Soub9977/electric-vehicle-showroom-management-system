@@ -41,6 +41,11 @@ def adminsigninform(request):
     return render(request, 'evapp/adminsigninform.html')
 
 
+def customersignupform(request):
+    return render(request, 'evapp/customersignupform.html')
+
+
+# load customersignupform
 def adminsignin(request):
     # get the input
     vemailid = request.POST.get("textemail")
@@ -55,11 +60,6 @@ def adminsignin(request):
     except:
         messages = "Invalid login"
         return render(request, 'evapp/loginmessages.html', {"messages": messages})
-
-
-# load customersignupform
-def customersignupform(request):
-    return render(request, 'evapp/customersignupform.html')
 
 
 def customersignup(request):
@@ -209,39 +209,12 @@ def addmodelforminfo(request, s):
     return render(request, 'evapp/addmodelform.html', {'modelname': s})
 
 
-def addmodel(request):
-    vmodelname = request.POST.get("textmodelname")
-    vgear = request.POST.get("textgear")
-    vdimension = request.POST.get("textdimension")
-    vbatterycapacity = request.POST.get("textbatterycapacity")
-    vwheel = request.POST.get("textwheel")
-    vbrake = request.POST.get("textbrake")
-    vspeed = request.POST.get("textspeed")
-    vemission = request.POST.get("textemission")
-    vusb = request.POST.get("textusb")
-    vchargingtime = request.POST.get("textchargingtime")
-    vmrp = request.POST.get("textmrp")
-    vwarranty = request.POST.get("textwarranty")
-    vdescription = request.POST.get("textdescription")
-
-    # insert row into vehicle table
-    vehicleobj = Vehicle.Objects.get(modelname=vmodelname)
-    evmodelobj = EVModel(modelname=vehicleobj, gear=vgear, dimension=vdimension, batterycapacity=vbatterycapacity,
-                         wheel=vwheel,
-                         brake=vbrake, speed=vspeed, emission=vemission, usb=vusb, chargingtime=vchargingtime, mrp=vmrp,
-                         warranty=vwarranty,
-                         description=vdescription)
-    evmodelobj.save()
-    messages = "EV Model Saved"
-    return render(request, 'evapp/adminmessages.html', {"messages": messages})
-
-
-
-
 def viewmodeldetails(request, s):
     evmodelobj = EVModel.Objects.filter(modelname=s)
     c = len(evmodelobj)
     return render(request, 'evapp/viewmodel.html', {'evmodelobj': evmodelobj, 'count': c})
+
+
 
 
 def addcolorform(request, x, y):
@@ -279,11 +252,11 @@ def addcolor(request):
     return render(request, 'evapp/adminmessages.html', {"messages": messages})
 
 
-
-
 def viewcolor(request):
     colorsobj = Colors.Objects.all()
     return render(request, 'evapp/viewcolor.html', {'colorsobj': colorsobj})
+
+
 
 
 def browsevehicle(request):
@@ -302,6 +275,12 @@ def browsemodel(request, x):
     return render(request, 'evapp/browsemodel.html', {'evmodelobj': evmodelobj, 'count':c})
 
 
+def quotationform(request, a, b):
+    request.session["colorid"] = b
+    request.session["color"] = a
+    return render(request, 'evapp/quotationform.html')
+
+
 def browsecolor(request, x, y, z):
     # fetch all vehicle from table and display in browsevehicle.html
     # select * from vehicle
@@ -316,10 +295,31 @@ def browsecolor(request, x, y, z):
     return render(request, 'evapp/browsecolor.html', {'colorsobj': colorsobj,'count':c})
 
 
-def quotationform(request, a, b):
-    request.session["colorid"] = b
-    request.session["color"] = a
-    return render(request, 'evapp/quotationform.html')
+def addmodel(request):
+    vmodelname = request.POST.get("textmodelname")
+    vgear = request.POST.get("textgear")
+    vdimension = request.POST.get("textdimension")
+    vbatterycapacity = request.POST.get("textbatterycapacity")
+    vwheel = request.POST.get("textwheel")
+    vbrake = request.POST.get("textbrake")
+    vspeed = request.POST.get("textspeed")
+    vemission = request.POST.get("textemission")
+    vusb = request.POST.get("textusb")
+    vchargingtime = request.POST.get("textchargingtime")
+    vmrp = request.POST.get("textmrp")
+    vwarranty = request.POST.get("textwarranty")
+    vdescription = request.POST.get("textdescription")
+
+    # insert row into vehicle table
+    vehicleobj = Vehicle.Objects.get(modelname=vmodelname)
+    evmodelobj = EVModel(modelname=vehicleobj, gear=vgear, dimension=vdimension, batterycapacity=vbatterycapacity,
+                         wheel=vwheel,
+                         brake=vbrake, speed=vspeed, emission=vemission, usb=vusb, chargingtime=vchargingtime, mrp=vmrp,
+                         warranty=vwarranty,
+                         description=vdescription)
+    evmodelobj.save()
+    messages = "EV Model Saved"
+    return render(request, 'evapp/adminmessages.html', {"messages": messages})
 
 def quotation(request):
     vavailfinance = request.POST.get("textavailfinance")
